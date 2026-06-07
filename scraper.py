@@ -60,31 +60,41 @@ async def dismiss_overlays(page: Page):
             pass
 
 
-async def set_business_class(page: Page) -> bool:
-    economy = page.locator(':text-is("Economy")').first
+async def is_business_selected(page: Page) -> bool:
+    """Return True if the cabin selector currently shows Business."""
     try:
-        await economy.click(timeout=4_000, force=True)
-    except Exception:
-        try:
-            box = await economy.bounding_box(timeout=2_000)
-            if box:
-                await page.mouse.click(
-                    box["x"] + box["width"] / 2,
-                    box["y"] + box["height"] / 2,
-                )
-            else:
-                return False
-        except Exception:
-            return False
-
-    await asyncio.sleep(1.2)
-    business = page.locator(':text-is("Business")').first
-    try:
-        await business.click(timeout=3_000, force=True)
-        await asyncio.sleep(0.5)
-        return True
+        # After selecting Business, the dropdown button changes label
+        count = await page.locator(':text-is("Business")').count()
+        return count > 0
     except Exception:
         return False
+
+
+async def set_business_class(page: Page) -> bool:
+    for attempt in range(3):
+        try:
+            economy = page.locator(':text-is("Economy")').first
+            if not await economy.is_visible(timeout=3_000):
+                # Already switched — verify
+                if await is_business_selected(page):
+                    return True
+                await asyncio.sleep(1)
+                continue
+
+            await economy.click(timeout=4_000, force=True)
+            await asyncio.sleep(1.5)
+
+            business = page.locator(':text-is("Business")').first
+            await business.click(timeout=3_000, force=True)
+            await asyncio.sleep(3)  # wait for results to reload
+
+            if await is_business_selected(page):
+                return True
+            # Economy button came back — retry
+        except Exception:
+            await asyncio.sleep(1)
+
+    return False
 
 
 async def extract_cheapest_price(page: Page) -> float | None:
@@ -98,7 +108,7 @@ async def extract_cheapest_price(page: Page) -> float | None:
                 const m = el.textContent.match(rx);
                 if (!m) return;
                 const v = parseFloat(m[1].replace(/,/g, ''));
-                if (v >= 500 && v <= 30000) found.push(v);
+                if (v >= 800 && v <= 30000) found.push(v);
             });
             return found.sort((a, b) => a - b);
         }
@@ -127,14 +137,18 @@ async def search_route(
             await page.keyboard.press("Escape")
             await asyncio.sleep(0.2)
 
-        # Switch to Business class (only needed once, but Google sometimes resets it)
-        await set_business_class(page)
+        # Switch to Business class — retry up to 3x with verification
+        confirmed = await set_business_class(page)
+        if not confirmed:
+            print(f"    -> WARNING: could not confirm Business class, skipping")
+            await page.screenshot(path=str(data_dir / f"debug_{dest_iata.lower()}.png"))
+            return None
         await asyncio.sleep(3)
 
         price = await extract_cheapest_price(page)
 
         if price:
-            print(f"    -> ${price:,.0f}")
+            print(f"    -> ${price:,.0f} (Business confirmed)")
             return {
                 "destination": dest_city,
                 "country": dest_country,
