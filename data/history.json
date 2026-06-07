@@ -136,5 +136,35 @@
     "country": "Malaysia",
     "price_usd": 3832,
     "date": "2026-06-06"
+  },
+  {
+    "destination": "Toronto",
+    "country": "Canada",
+    "price_usd": 3841,
+    "date": "2026-06-07"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 3320,
+    "date": "2026-06-07"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3985,
+    "date": "2026-06-07"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 1589,
+    "date": "2026-06-07"
+  },
+  {
+    "destination": "Buenos Aires",
+    "country": "Argentina",
+    "price_usd": 3745,
+    "date": "2026-06-07"
   }
 ]
