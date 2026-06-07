@@ -39,6 +39,11 @@ df["pct_below_avg"] = ((avg_price - df["price_usd"]) / avg_price * 100).round(1)
 if "scraped_at" in df.columns:
     df["scraped_at"] = pd.to_datetime(df["scraped_at"]).dt.strftime("%Y-%m-%d %H:%M")
 
+df["buy_link"] = df["destination"].apply(
+    lambda d: "https://www.google.com/travel/flights?hl=en&curr=USD&q=flights+from+tel+aviv+to+"
+              + d.lower().replace(" ", "+")
+)
+
 # ── Top KPIs ─────────────────────────────────────────────────────────────────
 col1, col2, col3, col4 = st.columns(4)
 col1.metric("Destinations found", len(df))
@@ -93,29 +98,69 @@ fig.add_hline(
 fig.update_layout(xaxis_tickangle=-35, showlegend=True)
 st.plotly_chart(fig, use_container_width=True)
 
-# ── Table ─────────────────────────────────────────────────────────────────────
+# ── Table with buy links ───────────────────────────────────────────────────────
 st.subheader("All Results")
 
-display_cols = ["destination", "country", "price_usd", "pct_below_avg", "is_deal", "scraped_at"]
+display_cols = ["destination", "country", "price_usd", "pct_below_avg", "is_deal", "buy_link"]
+if "scraped_at" in filtered.columns:
+    display_cols.append("scraped_at")
 available = [c for c in display_cols if c in filtered.columns]
 
-def highlight_deals(row):
-    if row.get("is_deal"):
-        return ["background-color: #dcfce7"] * len(row)
-    return [""] * len(row)
-
 st.dataframe(
-    filtered[available]
-    .rename(columns={
+    filtered[available].sort_values("price_usd").rename(columns={
         "destination": "Destination",
         "country": "Country",
         "price_usd": "Price (USD)",
         "pct_below_avg": "% Below Avg",
-        "is_deal": "Deal ✓",
+        "is_deal": "Deal",
+        "buy_link": "Book",
         "scraped_at": "Scraped At",
-    })
-    .style.apply(highlight_deals, axis=1)
-    .format({"Price (USD)": "${:,.0f}", "% Below Avg": "{:.1f}%"}),
+    }),
+    column_config={
+        "Price (USD)": st.column_config.NumberColumn(format="$%d"),
+        "% Below Avg": st.column_config.NumberColumn(format="%.1f%%"),
+        "Deal": st.column_config.CheckboxColumn(),
+        "Book": st.column_config.LinkColumn("Book", display_text="Buy on Google Flights"),
+    },
     use_container_width=True,
+    hide_index=True,
     height=500,
 )
+
+# ── Price trend over time ─────────────────────────────────────────────────────
+st.divider()
+st.subheader("Price Trend Over Time")
+
+history_path = Path(__file__).parent / "data" / "history.json"
+if history_path.exists():
+    history = json.loads(history_path.read_text(encoding="utf-8"))
+    hist_df = pd.DataFrame(history)
+    hist_df["date"] = pd.to_datetime(hist_df["date"])
+    hist_df["price_usd"] = pd.to_numeric(hist_df["price_usd"], errors="coerce")
+
+    num_days = hist_df["date"].nunique()
+    if num_days < 2:
+        st.info("Trend data will appear here after the second daily scrape. Check back tomorrow!")
+    else:
+        all_dests = sorted(hist_df["destination"].unique())
+        # Default to deal destinations if any, otherwise first 5
+        deal_dests = df[df["is_deal"]]["destination"].tolist()
+        default_dests = deal_dests if deal_dests else all_dests[:5]
+        selected = st.multiselect("Select destinations to compare", all_dests, default=default_dests)
+
+        if selected:
+            trend_df = hist_df[hist_df["destination"].isin(selected)].sort_values("date")
+            fig2 = px.line(
+                trend_df,
+                x="date",
+                y="price_usd",
+                color="destination",
+                markers=True,
+                labels={"price_usd": "Price (USD)", "date": "Date", "destination": "Destination"},
+                height=400,
+            )
+            fig2.update_traces(mode="lines+markers")
+            fig2.update_layout(yaxis_tickprefix="$", yaxis_tickformat=",")
+            st.plotly_chart(fig2, use_container_width=True)
+else:
+    st.info("Trend data will appear here after the first scrape completes.")

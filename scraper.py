@@ -8,6 +8,7 @@ import asyncio
 import json
 import os
 import re
+from datetime import datetime
 from pathlib import Path
 from playwright.async_api import async_playwright, Page
 
@@ -204,11 +205,26 @@ async def scrape() -> list[dict]:
             f["avg_price_usd"] = round(avg, 2)
 
         saved = save_flights(flights)
+        today = datetime.utcnow().strftime("%Y-%m-%d")
         (data_dir / "flights.json").write_text(
             json.dumps(flights, indent=2, ensure_ascii=False),
             encoding="utf-8",
         )
-        print(f"\nSaved {saved} flights to DB + flights.json")
+
+        # Append to history for trend tracking
+        history_path = data_dir / "history.json"
+        history = json.loads(history_path.read_text(encoding="utf-8")) if history_path.exists() else []
+        # Remove any existing entries for today to avoid duplicates on re-run
+        history = [h for h in history if h.get("date") != today]
+        for f in flights:
+            history.append({
+                "destination": f["destination"],
+                "country": f["country"],
+                "price_usd": f["price_usd"],
+                "date": today,
+            })
+        history_path.write_text(json.dumps(history, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"\nSaved {saved} flights to DB + flights.json + history.json")
 
     return flights
 
