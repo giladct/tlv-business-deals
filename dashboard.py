@@ -1,15 +1,9 @@
-"""
-Streamlit dashboard — run with:  streamlit run dashboard.py
-"""
-
 import json
 from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
 import streamlit as st
-
-from storage import init_db, load_latest_flights
 
 st.set_page_config(
     page_title="TLV Business Class Deals",
@@ -22,17 +16,16 @@ st.caption("Exotic destinations · Deals = 30 % or more below average price")
 
 # ── Load data ────────────────────────────────────────────────────────────────
 json_path = Path(__file__).parent / "data" / "flights.json"
+
 if json_path.exists():
     flights = json.loads(json_path.read_text(encoding="utf-8"))
 else:
+    from storage import init_db, load_latest_flights
     init_db()
     flights = load_latest_flights()
 
 if not flights:
-    st.warning(
-        "No data yet. Run the scraper first:\n\n"
-        "```\npython scraper.py\n```"
-    )
+    st.warning("No data yet. Run the scraper first: `python scraper.py`")
     st.stop()
 
 df = pd.DataFrame(flights)
@@ -43,7 +36,8 @@ avg_price = df["price_usd"].mean()
 deal_threshold = avg_price * 0.70
 df["is_deal"] = df["price_usd"] <= deal_threshold
 df["pct_below_avg"] = ((avg_price - df["price_usd"]) / avg_price * 100).round(1)
-df["scraped_at"] = pd.to_datetime(df["scraped_at"]).dt.strftime("%Y-%m-%d %H:%M")
+if "scraped_at" in df.columns:
+    df["scraped_at"] = pd.to_datetime(df["scraped_at"]).dt.strftime("%Y-%m-%d %H:%M")
 
 # ── Top KPIs ─────────────────────────────────────────────────────────────────
 col1, col2, col3, col4 = st.columns(4)
@@ -125,13 +119,3 @@ st.dataframe(
     use_container_width=True,
     height=500,
 )
-
-# ── Refresh button ────────────────────────────────────────────────────────────
-st.divider()
-if st.button("Re-run scraper"):
-    with st.spinner("Searching 25 exotic routes on Google Flights (~5 min)..."):
-        import asyncio
-        from scraper import scrape
-        asyncio.run(scrape())
-    st.success("Done! Refreshing data…")
-    st.rerun()
