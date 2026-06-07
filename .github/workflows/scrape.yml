@@ -24,6 +24,7 @@ jobs:
         run: |
           uv venv .venv --python 3.12
           uv pip install -r requirements.txt
+          uv pip install playwright==1.44.0
 
       - name: Install Playwright Chromium
         run: .venv/bin/playwright install chromium --with-deps
