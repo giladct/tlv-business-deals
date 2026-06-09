@@ -1,33 +1,63 @@
 [
   {
-    "destination": "Tokyo",
-    "country": "Japan",
-    "iata_code": "NRT",
-    "price_usd": 3334,
+    "destination": "Miami",
+    "country": "USA",
+    "iata_code": "MIA",
+    "price_usd": 2870,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3347.44
+    "avg_price_usd": 3174.2
   },
   {
-    "destination": "Singapore",
-    "country": "Singapore",
-    "iata_code": "SIN",
-    "price_usd": 4548,
+    "destination": "Chicago",
+    "country": "USA",
+    "iata_code": "ORD",
+    "price_usd": 3550,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3347.44
+    "avg_price_usd": 3174.2
   },
   {
-    "destination": "Delhi",
+    "destination": "Phuket",
+    "country": "Thailand",
+    "iata_code": "HKT",
+    "price_usd": 3159,
+    "cabin": "Business",
+    "origin": "TLV",
+    "is_deal": false,
+    "avg_price_usd": 3174.2
+  },
+  {
+    "destination": "Seoul",
+    "country": "South Korea",
+    "iata_code": "ICN",
+    "price_usd": 3497,
+    "cabin": "Business",
+    "origin": "TLV",
+    "is_deal": false,
+    "avg_price_usd": 3174.2
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "iata_code": "DPS",
+    "price_usd": 4226,
+    "cabin": "Business",
+    "origin": "TLV",
+    "is_deal": false,
+    "avg_price_usd": 3174.2
+  },
+  {
+    "destination": "Mumbai",
     "country": "India",
-    "iata_code": "DEL",
-    "price_usd": 1777,
+    "iata_code": "BOM",
+    "price_usd": 1531,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": true,
-    "avg_price_usd": 3347.44
+    "avg_price_usd": 3174.2
   },
   {
     "destination": "Sydney",
@@ -37,7 +67,7 @@
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3347.44
+    "avg_price_usd": 3174.2
   },
   {
     "destination": "Cape Town",
@@ -47,37 +77,17 @@
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3347.44
+    "avg_price_usd": 3174.2
   },
   {
-    "destination": "Nairobi",
-    "country": "Kenya",
-    "iata_code": "NBO",
-    "price_usd": 1589,
+    "destination": "Maldives",
+    "country": "Maldives",
+    "iata_code": "MLE",
+    "price_usd": 927,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": true,
-    "avg_price_usd": 3347.44
-  },
-  {
-    "destination": "Buenos Aires",
-    "country": "Argentina",
-    "iata_code": "EZE",
-    "price_usd": 3927,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3347.44
-  },
-  {
-    "destination": "Shanghai",
-    "country": "China",
-    "iata_code": "PVG",
-    "price_usd": 2970,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3347.44
+    "avg_price_usd": 3174.2
   },
   {
     "destination": "Beijing",
@@ -87,6 +97,6 @@
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3347.44
+    "avg_price_usd": 3174.2
   }
 ]
