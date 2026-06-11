@@ -448,5 +448,23 @@
     "country": "Malaysia",
     "price_usd": 1978,
     "date": "2026-06-10"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3837,
+    "date": "2026-06-11"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 2124,
+    "date": "2026-06-11"
+  },
+  {
+    "destination": "Beijing",
+    "country": "China",
+    "price_usd": 2855,
+    "date": "2026-06-11"
   }
 ]
