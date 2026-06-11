@@ -61,11 +61,15 @@ async def dismiss_overlays(page: Page):
 
 
 async def is_business_selected(page: Page) -> bool:
-    """Return True if the cabin selector currently shows Business."""
+    """Return True if the cabin selector shows Business (Economy button no longer visible)."""
     try:
-        # After selecting Business, the dropdown button changes label
-        count = await page.locator(':text-is("Business")').count()
-        return count > 0
+        # If Economy is still showing in the selector, Business was NOT applied
+        economy_count = await page.locator(':text-is("Economy")').count()
+        if economy_count > 0:
+            return False
+        # Economy gone + Business visible = selector switched to Business
+        business_count = await page.locator(':text-is("Business")').count()
+        return business_count > 0
     except Exception:
         return False
 
@@ -108,7 +112,7 @@ async def extract_cheapest_price(page: Page) -> float | None:
                 const m = el.textContent.match(rx);
                 if (!m) return;
                 const v = parseFloat(m[1].replace(/,/g, ''));
-                if (v >= 800 && v <= 30000) found.push(v);
+                if (v >= 1100 && v <= 30000) found.push(v);
             });
             return found.sort((a, b) => a - b);
         }
