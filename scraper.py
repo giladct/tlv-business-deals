@@ -61,15 +61,10 @@ async def dismiss_overlays(page: Page):
 
 
 async def is_business_selected(page: Page) -> bool:
-    """Return True if the cabin selector shows Business (Economy button no longer visible)."""
+    """Return True if the cabin selector currently shows Business."""
     try:
-        # If Economy is still showing in the selector, Business was NOT applied
-        economy_count = await page.locator(':text-is("Economy")').count()
-        if economy_count > 0:
-            return False
-        # Economy gone + Business visible = selector switched to Business
-        business_count = await page.locator(':text-is("Business")').count()
-        return business_count > 0
+        count = await page.locator(':text-is("Business")').count()
+        return count > 0
     except Exception:
         return False
 
