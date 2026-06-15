@@ -1,25 +1,27 @@
-import asyncio
+"""
+World Cup alert bot — uses Telegram Bot API directly via requests,
+no python-telegram-bot library needed.
+"""
 import json
 import logging
 import os
+import threading
+import time
 from datetime import datetime
 
 import pytz
 import requests
-from telegram import Update
-from telegram.ext import Application, CommandHandler, ContextTypes
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
 
-TELEGRAM_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TG_BASE = f"https://api.telegram.org/bot{TOKEN}"
 SUBSCRIBERS_FILE = "data/subscribers.json"
 POLL_INTERVAL = 120  # seconds between score checks
 ISRAEL_TZ = pytz.timezone("Asia/Jerusalem")
-
 ESPN_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard"
 
-# Tracks which alerts have already been sent per game to avoid spam
-_sent_alerts: dict[str, bool] = {}
+_sent_alerts: dict = {}
 
 
 # ---------- persistence ----------
@@ -38,6 +40,29 @@ def save_subscribers(subs: set):
 
 
 subscribers = load_subscribers()
+subscribers_lock = threading.Lock()
+
+
+# ---------- Telegram API helpers ----------
+
+def tg_get(method: str, params: dict = None):
+    try:
+        r = requests.get(f"{TG_BASE}/{method}", params=params, timeout=30)
+        r.raise_for_status()
+        return r.json()
+    except Exception as e:
+        logging.error("Telegram GET %s error: %s", method, e)
+        time.sleep(5)
+        return {}
+
+
+def tg_send(chat_id: int, text: str):
+    try:
+        requests.post(f"{TG_BASE}/sendMessage",
+                      json={"chat_id": chat_id, "text": text},
+                      timeout=10)
+    except Exception as e:
+        logging.warning("Failed to send to %s: %s", chat_id, e)
 
 
 # ---------- ESPN helpers ----------
@@ -71,23 +96,21 @@ def game_summary(event: dict) -> str:
     comp = event["competitions"][0]
     teams = comp.get("competitors", [])
     home = next((t for t in teams if t.get("homeAway") == "home"), teams[0])
-    away = next((t for t in teams if t.get("homeAway") == "away"), teams[1] if len(teams) > 1 else teams[0])
+    away = next((t for t in teams if t.get("homeAway") == "away"), teams[-1])
     status = comp.get("status", {})
     clock = status.get("displayClock", "?")
     period = status.get("period", 1)
-
     period_label = {1: "1H", 2: "2H", 3: "ET1", 4: "ET2", 5: "PEN"}.get(period, f"P{period}")
     return (
         f"{away.get('team', {}).get('shortDisplayName', '?')} "
-        f"{away.get('score', '0')} – "
+        f"{away.get('score', '0')} - "
         f"{home.get('score', '0')} "
         f"{home.get('team', {}).get('shortDisplayName', '?')}  "
         f"[{clock}' {period_label}]"
     )
 
 
-def should_alert(event: dict) -> tuple[bool, str]:
-    """Return (True, reason) if this game deserves a 'turn on the TV' alert."""
+def should_alert(event: dict) -> tuple:
     comp = event["competitions"][0]
     teams = comp.get("competitors", [])
     status = comp.get("status", {})
@@ -102,29 +125,29 @@ def should_alert(event: dict) -> tuple[bool, str]:
     except Exception:
         return False, ""
 
-    # Penalty shootout — always worth watching
-    key_pen = f"{event_id}:pen"
-    if period >= 5 and key_pen not in _sent_alerts:
-        _sent_alerts[key_pen] = True
-        return True, "penalties"
+    if period >= 5:
+        key = f"{event_id}:pen"
+        if key not in _sent_alerts:
+            _sent_alerts[key] = True
+            return True, "penalties"
 
-    # Extra time — always worth watching
-    key_et = f"{event_id}:et"
-    if period in (3, 4) and key_et not in _sent_alerts:
-        _sent_alerts[key_et] = True
-        return True, "extra_time"
+    if period in (3, 4):
+        key = f"{event_id}:et"
+        if key not in _sent_alerts:
+            _sent_alerts[key] = True
+            return True, "extra_time"
 
-    # Last 15 min of 2nd half, score within 1 goal
-    key_75 = f"{event_id}:min75"
-    if period == 2 and minute >= 75 and diff <= 1 and key_75 not in _sent_alerts:
-        _sent_alerts[key_75] = True
-        return True, "close_75"
+    if period == 2 and minute >= 75 and diff <= 1:
+        key = f"{event_id}:min75"
+        if key not in _sent_alerts:
+            _sent_alerts[key] = True
+            return True, "close_75"
 
-    # Last 5 min of 2nd half, score within 2 goals (comeback possible)
-    key_85 = f"{event_id}:min85"
-    if period == 2 and minute >= 85 and diff <= 2 and key_85 not in _sent_alerts:
-        _sent_alerts[key_85] = True
-        return True, "close_85"
+    if period == 2 and minute >= 85 and diff <= 2:
+        key = f"{event_id}:min85"
+        if key not in _sent_alerts:
+            _sent_alerts[key] = True
+            return True, "close_85"
 
     return False, ""
 
@@ -133,7 +156,7 @@ def build_alert(event: dict, reason: str) -> str:
     comp = event["competitions"][0]
     teams = comp.get("competitors", [])
     home = next((t for t in teams if t.get("homeAway") == "home"), teams[0])
-    away = next((t for t in teams if t.get("homeAway") == "away"), teams[1] if len(teams) > 1 else teams[0])
+    away = next((t for t in teams if t.get("homeAway") == "away"), teams[-1])
     status = comp.get("status", {})
     clock = status.get("displayClock", "?")
 
@@ -159,78 +182,86 @@ def build_alert(event: dict, reason: str) -> str:
     return (
         f"WORLD CUP ALERT\n"
         f"{header}\n\n"
-        f"{away_name}  {away_score} – {home_score}  {home_name}"
+        f"{away_name}  {away_score} - {home_score}  {home_name}"
         f"{tv_line}\n"
         f"Israel time: {now_il}"
     )
 
 
-# ---------- bot commands ----------
+# ---------- command handlers ----------
 
-async def cmd_start(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    cid = update.effective_chat.id
-    subscribers.add(cid)
-    save_subscribers(subscribers)
-    await update.message.reply_text(
-        "Subscribed to World Cup alerts!\n\n"
-        "I'll ping you when a game is in its final minutes with a close score, "
-        "goes to extra time, or reaches penalties.\n\n"
-        "/status — see live games now\n"
-        "/stop   — unsubscribe"
-    )
-
-
-async def cmd_stop(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
-    cid = update.effective_chat.id
-    subscribers.discard(cid)
-    save_subscribers(subscribers)
-    await update.message.reply_text("Unsubscribed. Use /start anytime to re-subscribe.")
+def handle_start(chat_id: int):
+    with subscribers_lock:
+        subscribers.add(chat_id)
+        save_subscribers(subscribers)
+    tg_send(chat_id,
+            "Subscribed to World Cup alerts!\n\n"
+            "I'll notify you when a game enters its final minutes with a close score, "
+            "goes to extra time, or reaches penalties.\n\n"
+            "/status — see live games now\n"
+            "/stop   — unsubscribe")
 
 
-async def cmd_status(update: Update, ctx: ContextTypes.DEFAULT_TYPE):
+def handle_stop(chat_id: int):
+    with subscribers_lock:
+        subscribers.discard(chat_id)
+        save_subscribers(subscribers)
+    tg_send(chat_id, "Unsubscribed. Send /start anytime to re-subscribe.")
+
+
+def handle_status(chat_id: int):
     games = fetch_live_games()
     if not games:
-        await update.message.reply_text("No live World Cup games right now.")
+        tg_send(chat_id, "No live World Cup games right now.")
         return
     lines = ["Live World Cup games:\n"] + [game_summary(g) for g in games]
-    await update.message.reply_text("\n".join(lines))
+    tg_send(chat_id, "\n".join(lines))
 
 
-# ---------- background poller ----------
+COMMANDS = {
+    "/start": handle_start,
+    "/stop": handle_stop,
+    "/status": handle_status,
+}
 
-async def score_poller(app: Application):
+
+# ---------- update polling loop ----------
+
+def poll_updates():
+    offset = None
     while True:
-        await asyncio.sleep(POLL_INTERVAL)
-        if not subscribers:
+        data = tg_get("getUpdates", {"timeout": 25, "offset": offset})
+        for update in data.get("result", []):
+            offset = update["update_id"] + 1
+            msg = update.get("message", {})
+            chat_id = msg.get("chat", {}).get("id")
+            text = (msg.get("text") or "").strip().split("@")[0]  # strip @botname
+            if chat_id and text in COMMANDS:
+                COMMANDS[text](chat_id)
+
+
+# ---------- score polling loop ----------
+
+def poll_scores():
+    while True:
+        time.sleep(POLL_INTERVAL)
+        with subscribers_lock:
+            subs = set(subscribers)
+        if not subs:
             continue
         for game in fetch_live_games():
             worth, reason = should_alert(game)
             if not worth:
                 continue
             msg = build_alert(game, reason)
-            for cid in list(subscribers):
-                try:
-                    await app.bot.send_message(chat_id=cid, text=msg)
-                except Exception as exc:
-                    logging.warning("Could not send to %s: %s", cid, exc)
+            for cid in subs:
+                tg_send(cid, msg)
 
 
 # ---------- entry point ----------
 
-async def run():
-    app = Application.builder().token(TELEGRAM_TOKEN).build()
-    app.add_handler(CommandHandler("start", cmd_start))
-    app.add_handler(CommandHandler("stop", cmd_stop))
-    app.add_handler(CommandHandler("status", cmd_status))
-
-    async with app:
-        await app.start()
-        await app.updater.start_polling()
-        logging.info("Bot running. Checking scores every %ds.", POLL_INTERVAL)
-        await score_poller(app)
-        await app.updater.stop()
-        await app.stop()
-
-
 if __name__ == "__main__":
-    asyncio.run(run())
+    logging.info("Bot starting...")
+    threading.Thread(target=poll_scores, daemon=True).start()
+    logging.info("Polling for updates... Send /start to your bot in Telegram.")
+    poll_updates()
