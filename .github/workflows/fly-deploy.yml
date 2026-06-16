@@ -1,0 +1,33 @@
+name: Deploy to Fly.io
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'sports_bot.py'
+      - 'Dockerfile'
+      - 'fly.toml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+
+      - name: Create app if it doesn't exist
+        run: flyctl apps create tlv-worldcup-bot --machines || true
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Set Telegram token secret
+        run: echo "${{ secrets.TELEGRAM_BOT_TOKEN }}" | flyctl secrets set TELEGRAM_BOT_TOKEN=-
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
+
+      - name: Deploy
+        run: flyctl deploy --remote-only
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
