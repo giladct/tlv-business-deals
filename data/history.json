@@ -1036,5 +1036,29 @@
     "country": "Malaysia",
     "price_usd": 2727,
     "date": "2026-06-15"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3446,
+    "date": "2026-06-18"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3708,
+    "date": "2026-06-18"
+  },
+  {
+    "destination": "Mumbai",
+    "country": "India",
+    "price_usd": 1531,
+    "date": "2026-06-18"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 2940,
+    "date": "2026-06-18"
   }
 ]
