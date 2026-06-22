@@ -1408,5 +1408,41 @@
     "country": "Malaysia",
     "price_usd": 3998,
     "date": "2026-06-21"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3446,
+    "date": "2026-06-22"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3953,
+    "date": "2026-06-22"
+  },
+  {
+    "destination": "Sydney",
+    "country": "Australia",
+    "price_usd": 4081,
+    "date": "2026-06-22"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3041,
+    "date": "2026-06-22"
+  },
+  {
+    "destination": "Maldives",
+    "country": "Maldives",
+    "price_usd": 1176,
+    "date": "2026-06-22"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 1607,
+    "date": "2026-06-22"
   }
 ]
