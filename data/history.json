@@ -1444,5 +1444,131 @@
     "country": "Kenya",
     "price_usd": 1607,
     "date": "2026-06-22"
+  },
+  {
+    "destination": "New York",
+    "country": "USA",
+    "price_usd": 2820,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3642,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Miami",
+    "country": "USA",
+    "price_usd": 3380,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Toronto",
+    "country": "Canada",
+    "price_usd": 3446,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Phuket",
+    "country": "Thailand",
+    "price_usd": 3038,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Tokyo",
+    "country": "Japan",
+    "price_usd": 3928,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 3240,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3446,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Seoul",
+    "country": "South Korea",
+    "price_usd": 4003,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3953,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Mumbai",
+    "country": "India",
+    "price_usd": 1528,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 2197,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Sydney",
+    "country": "Australia",
+    "price_usd": 4081,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Melbourne",
+    "country": "Australia",
+    "price_usd": 6266,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3041,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "price_usd": 2463,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Maldives",
+    "country": "Maldives",
+    "price_usd": 1101,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 1591,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Sao Paulo",
+    "country": "Brazil",
+    "price_usd": 2920,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 2939,
+    "date": "2026-06-23"
+  },
+  {
+    "destination": "Kuala Lumpur",
+    "country": "Malaysia",
+    "price_usd": 3015,
+    "date": "2026-06-23"
   }
 ]
