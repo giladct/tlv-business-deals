@@ -1,3 +1,6 @@
 streamlit
 pandas
 plotly
+python-telegram-bot==21.9
+requests
+pytz

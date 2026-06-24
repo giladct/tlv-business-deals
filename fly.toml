@@ -1,0 +1,7 @@
+app = "tlv-worldcup-bot"
+primary_region = "ams"
+
+[build]
+
+[processes]
+  app = "python sports_bot.py"
