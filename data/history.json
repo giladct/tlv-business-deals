@@ -1576,5 +1576,11 @@
     "country": "Malaysia",
     "price_usd": 1255,
     "date": "2026-06-24"
+  },
+  {
+    "destination": "Beijing",
+    "country": "China",
+    "price_usd": 1183,
+    "date": "2026-06-26"
   }
 ]
