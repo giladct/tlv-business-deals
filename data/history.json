@@ -2332,5 +2332,95 @@
     "country": "Malaysia",
     "price_usd": 3021,
     "date": "2026-07-01"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 3335,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3342,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Mumbai",
+    "country": "India",
+    "price_usd": 1989,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 2237,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Sydney",
+    "country": "Australia",
+    "price_usd": 5765,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Melbourne",
+    "country": "Australia",
+    "price_usd": 4207,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3055,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "price_usd": 2463,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Maldives",
+    "country": "Maldives",
+    "price_usd": 1111,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 1718,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Sao Paulo",
+    "country": "Brazil",
+    "price_usd": 2915,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Buenos Aires",
+    "country": "Argentina",
+    "price_usd": 2756,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 2917,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Beijing",
+    "country": "China",
+    "price_usd": 2907,
+    "date": "2026-07-02"
+  },
+  {
+    "destination": "Kuala Lumpur",
+    "country": "Malaysia",
+    "price_usd": 3055,
+    "date": "2026-07-02"
   }
 ]
