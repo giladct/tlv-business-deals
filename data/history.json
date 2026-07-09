@@ -3280,5 +3280,23 @@
     "country": "Malaysia",
     "price_usd": 3033,
     "date": "2026-07-08"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3545,
+    "date": "2026-07-09"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3656,
+    "date": "2026-07-09"
+  },
+  {
+    "destination": "Sydney",
+    "country": "Australia",
+    "price_usd": 6293,
+    "date": "2026-07-09"
   }
 ]
