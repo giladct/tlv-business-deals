@@ -12016,5 +12016,107 @@
     "country": "Malaysia",
     "price_usd": 3292,
     "date": "2026-09-06"
+  },
+  {
+    "destination": "New York",
+    "country": "USA",
+    "price_usd": 2820,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3442,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Miami",
+    "country": "USA",
+    "price_usd": 2910,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Phuket",
+    "country": "Thailand",
+    "price_usd": 2225,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 2959,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3028,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Seoul",
+    "country": "South Korea",
+    "price_usd": 2590,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3817,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Mumbai",
+    "country": "India",
+    "price_usd": 1894,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Sydney",
+    "country": "Australia",
+    "price_usd": 5770,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3167,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Maldives",
+    "country": "Maldives",
+    "price_usd": 1116,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Sao Paulo",
+    "country": "Brazil",
+    "price_usd": 3003,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Buenos Aires",
+    "country": "Argentina",
+    "price_usd": 4477,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 3162,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Beijing",
+    "country": "China",
+    "price_usd": 2883,
+    "date": "2026-09-07"
+  },
+  {
+    "destination": "Kuala Lumpur",
+    "country": "Malaysia",
+    "price_usd": 3283,
+    "date": "2026-09-07"
   }
 ]
