@@ -12184,5 +12184,53 @@
     "country": "Brazil",
     "price_usd": 2961,
     "date": "2026-09-08"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3550,
+    "date": "2026-09-09"
+  },
+  {
+    "destination": "Miami",
+    "country": "USA",
+    "price_usd": 2870,
+    "date": "2026-09-09"
+  },
+  {
+    "destination": "Bangkok",
+    "country": "Thailand",
+    "price_usd": 2188,
+    "date": "2026-09-09"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 2083,
+    "date": "2026-09-09"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3173,
+    "date": "2026-09-09"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 2926,
+    "date": "2026-09-09"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 3162,
+    "date": "2026-09-09"
+  },
+  {
+    "destination": "Beijing",
+    "country": "China",
+    "price_usd": 2883,
+    "date": "2026-09-09"
   }
 ]
