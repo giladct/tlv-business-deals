@@ -16096,5 +16096,29 @@
     "country": "Malaysia",
     "price_usd": 3014,
     "date": "2026-10-09"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3250,
+    "date": "2026-10-10"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3658,
+    "date": "2026-10-10"
+  },
+  {
+    "destination": "Sydney",
+    "country": "Australia",
+    "price_usd": 5830,
+    "date": "2026-10-10"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 1758,
+    "date": "2026-10-10"
   }
 ]
