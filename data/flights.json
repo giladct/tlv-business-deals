@@ -1,42 +1,72 @@
 [
   {
-    "destination": "Hong Kong",
-    "country": "Hong Kong",
-    "iata_code": "HKG",
-    "price_usd": 3250,
+    "destination": "Los Angeles",
+    "country": "USA",
+    "iata_code": "LAX",
+    "price_usd": 3609,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3624.0
+    "avg_price_usd": 2877.43
   },
   {
-    "destination": "Bali",
-    "country": "Indonesia",
-    "iata_code": "DPS",
-    "price_usd": 3658,
+    "destination": "Bangkok",
+    "country": "Thailand",
+    "iata_code": "BKK",
+    "price_usd": 2187,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3624.0
+    "avg_price_usd": 2877.43
   },
   {
-    "destination": "Sydney",
-    "country": "Australia",
-    "iata_code": "SYD",
-    "price_usd": 5830,
+    "destination": "Singapore",
+    "country": "Singapore",
+    "iata_code": "SIN",
+    "price_usd": 3020,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3624.0
+    "avg_price_usd": 2877.43
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "iata_code": "CPT",
+    "price_usd": 3058,
+    "cabin": "Business",
+    "origin": "TLV",
+    "is_deal": false,
+    "avg_price_usd": 2877.43
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "iata_code": "JNB",
+    "price_usd": 3022,
+    "cabin": "Business",
+    "origin": "TLV",
+    "is_deal": false,
+    "avg_price_usd": 2877.43
   },
   {
     "destination": "Nairobi",
     "country": "Kenya",
     "iata_code": "NBO",
-    "price_usd": 1758,
+    "price_usd": 2248,
     "cabin": "Business",
     "origin": "TLV",
-    "is_deal": true,
-    "avg_price_usd": 3624.0
+    "is_deal": false,
+    "avg_price_usd": 2877.43
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "iata_code": "PVG",
+    "price_usd": 2998,
+    "cabin": "Business",
+    "origin": "TLV",
+    "is_deal": false,
+    "avg_price_usd": 2877.43
   }
 ]

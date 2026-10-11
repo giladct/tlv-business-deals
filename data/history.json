@@ -16120,5 +16120,47 @@
     "country": "Kenya",
     "price_usd": 1758,
     "date": "2026-10-10"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3609,
+    "date": "2026-10-11"
+  },
+  {
+    "destination": "Bangkok",
+    "country": "Thailand",
+    "price_usd": 2187,
+    "date": "2026-10-11"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 3020,
+    "date": "2026-10-11"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3058,
+    "date": "2026-10-11"
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "price_usd": 3022,
+    "date": "2026-10-11"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 2248,
+    "date": "2026-10-11"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 2998,
+    "date": "2026-10-11"
   }
 ]
