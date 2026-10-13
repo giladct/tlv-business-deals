@@ -16162,5 +16162,29 @@
     "country": "China",
     "price_usd": 2998,
     "date": "2026-10-11"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 2968,
+    "date": "2026-10-13"
+  },
+  {
+    "destination": "Mumbai",
+    "country": "India",
+    "price_usd": 1706,
+    "date": "2026-10-13"
+  },
+  {
+    "destination": "Melbourne",
+    "country": "Australia",
+    "price_usd": 4864,
+    "date": "2026-10-13"
+  },
+  {
+    "destination": "Buenos Aires",
+    "country": "Argentina",
+    "price_usd": 3925,
+    "date": "2026-10-13"
   }
 ]
