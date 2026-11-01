@@ -18118,5 +18118,23 @@
     "country": "Malaysia",
     "price_usd": 3128,
     "date": "2026-10-31"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3690,
+    "date": "2026-11-01"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 2075,
+    "date": "2026-11-01"
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "price_usd": 2466,
+    "date": "2026-11-01"
   }
 ]
