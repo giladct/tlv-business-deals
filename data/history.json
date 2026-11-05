@@ -18466,5 +18466,47 @@
     "country": "China",
     "price_usd": 2457,
     "date": "2026-11-04"
+  },
+  {
+    "destination": "Bangkok",
+    "country": "Thailand",
+    "price_usd": 2191,
+    "date": "2026-11-05"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3750,
+    "date": "2026-11-05"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 1882,
+    "date": "2026-11-05"
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "price_usd": 2550,
+    "date": "2026-11-05"
+  },
+  {
+    "destination": "Sao Paulo",
+    "country": "Brazil",
+    "price_usd": 3181,
+    "date": "2026-11-05"
+  },
+  {
+    "destination": "Beijing",
+    "country": "China",
+    "price_usd": 2519,
+    "date": "2026-11-05"
+  },
+  {
+    "destination": "Kuala Lumpur",
+    "country": "Malaysia",
+    "price_usd": 3182,
+    "date": "2026-11-05"
   }
 ]
