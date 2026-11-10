@@ -18886,5 +18886,113 @@
     "country": "Malaysia",
     "price_usd": 3183,
     "date": "2026-11-09"
+  },
+  {
+    "destination": "Chicago",
+    "country": "USA",
+    "price_usd": 3230,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Toronto",
+    "country": "Canada",
+    "price_usd": 3521,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Bangkok",
+    "country": "Thailand",
+    "price_usd": 2191,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Phuket",
+    "country": "Thailand",
+    "price_usd": 3020,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Tokyo",
+    "country": "Japan",
+    "price_usd": 3397,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3750,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Bali",
+    "country": "Indonesia",
+    "price_usd": 3692,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Mumbai",
+    "country": "India",
+    "price_usd": 1704,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 1995,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Sydney",
+    "country": "Australia",
+    "price_usd": 5783,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Melbourne",
+    "country": "Australia",
+    "price_usd": 5012,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3419,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "price_usd": 2965,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 3018,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Sao Paulo",
+    "country": "Brazil",
+    "price_usd": 3180,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Buenos Aires",
+    "country": "Argentina",
+    "price_usd": 3141,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 2971,
+    "date": "2026-11-10"
+  },
+  {
+    "destination": "Beijing",
+    "country": "China",
+    "price_usd": 2856,
+    "date": "2026-11-10"
   }
 ]
