@@ -19504,5 +19504,35 @@
     "country": "China",
     "price_usd": 3028,
     "date": "2026-11-15"
+  },
+  {
+    "destination": "Los Angeles",
+    "country": "USA",
+    "price_usd": 3138,
+    "date": "2026-11-16"
+  },
+  {
+    "destination": "Toronto",
+    "country": "Canada",
+    "price_usd": 3524,
+    "date": "2026-11-16"
+  },
+  {
+    "destination": "Bangkok",
+    "country": "Thailand",
+    "price_usd": 2191,
+    "date": "2026-11-16"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 3141,
+    "date": "2026-11-16"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 2152,
+    "date": "2026-11-16"
   }
 ]
