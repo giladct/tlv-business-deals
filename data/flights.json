@@ -1,92 +1,12 @@
 [
   {
-    "destination": "New York",
-    "country": "USA",
-    "iata_code": "JFK",
-    "price_usd": 3143,
+    "destination": "Buenos Aires",
+    "country": "Argentina",
+    "iata_code": "EZE",
+    "price_usd": 3928,
     "cabin": "Business",
     "origin": "TLV",
     "is_deal": false,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Chicago",
-    "country": "USA",
-    "iata_code": "ORD",
-    "price_usd": 3492,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Toronto",
-    "country": "Canada",
-    "iata_code": "YYZ",
-    "price_usd": 3524,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Bangkok",
-    "country": "Thailand",
-    "iata_code": "BKK",
-    "price_usd": 2807,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Tokyo",
-    "country": "Japan",
-    "iata_code": "NRT",
-    "price_usd": 2979,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Mumbai",
-    "country": "India",
-    "iata_code": "BOM",
-    "price_usd": 1703,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": true,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Sydney",
-    "country": "Australia",
-    "iata_code": "SYD",
-    "price_usd": 5672,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Johannesburg",
-    "country": "South Africa",
-    "iata_code": "JNB",
-    "price_usd": 2466,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3218.67
-  },
-  {
-    "destination": "Kuala Lumpur",
-    "country": "Malaysia",
-    "iata_code": "KUL",
-    "price_usd": 3182,
-    "cabin": "Business",
-    "origin": "TLV",
-    "is_deal": false,
-    "avg_price_usd": 3218.67
+    "avg_price_usd": 3928.0
   }
 ]

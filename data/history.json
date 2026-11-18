@@ -19588,5 +19588,11 @@
     "country": "Malaysia",
     "price_usd": 3182,
     "date": "2026-11-17"
+  },
+  {
+    "destination": "Buenos Aires",
+    "country": "Argentina",
+    "price_usd": 3928,
+    "date": "2026-11-18"
   }
 ]
