@@ -19594,5 +19594,23 @@
     "country": "Argentina",
     "price_usd": 3928,
     "date": "2026-11-18"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 3129,
+    "date": "2026-11-19"
+  },
+  {
+    "destination": "Johannesburg",
+    "country": "South Africa",
+    "price_usd": 2549,
+    "date": "2026-11-19"
+  },
+  {
+    "destination": "Shanghai",
+    "country": "China",
+    "price_usd": 3028,
+    "date": "2026-11-19"
   }
 ]
