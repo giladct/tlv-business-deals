@@ -19990,5 +19990,23 @@
     "country": "China",
     "price_usd": 3028,
     "date": "2026-11-24"
+  },
+  {
+    "destination": "Hong Kong",
+    "country": "Hong Kong",
+    "price_usd": 3093,
+    "date": "2026-11-26"
+  },
+  {
+    "destination": "Seoul",
+    "country": "South Korea",
+    "price_usd": 3353,
+    "date": "2026-11-26"
+  },
+  {
+    "destination": "Mumbai",
+    "country": "India",
+    "price_usd": 1497,
+    "date": "2026-11-26"
   }
 ]
