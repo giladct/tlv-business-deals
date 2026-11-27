@@ -20008,5 +20008,47 @@
     "country": "India",
     "price_usd": 1497,
     "date": "2026-11-26"
+  },
+  {
+    "destination": "Toronto",
+    "country": "Canada",
+    "price_usd": 3349,
+    "date": "2026-11-27"
+  },
+  {
+    "destination": "Phuket",
+    "country": "Thailand",
+    "price_usd": 2869,
+    "date": "2026-11-27"
+  },
+  {
+    "destination": "Singapore",
+    "country": "Singapore",
+    "price_usd": 2936,
+    "date": "2026-11-27"
+  },
+  {
+    "destination": "Delhi",
+    "country": "India",
+    "price_usd": 1812,
+    "date": "2026-11-27"
+  },
+  {
+    "destination": "Melbourne",
+    "country": "Australia",
+    "price_usd": 5191,
+    "date": "2026-11-27"
+  },
+  {
+    "destination": "Cape Town",
+    "country": "South Africa",
+    "price_usd": 3153,
+    "date": "2026-11-27"
+  },
+  {
+    "destination": "Nairobi",
+    "country": "Kenya",
+    "price_usd": 2915,
+    "date": "2026-11-27"
   }
 ]
